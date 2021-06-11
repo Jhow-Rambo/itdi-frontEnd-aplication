@@ -1,0 +1,53 @@
+.cards-container{
+    width: 100%;
+    .info-inference{
+        display: flex;
+        width: 700px;
+        height: 214px;
+        margin: auto;
+        margin-top: 20px;
+        justify-content: space-between;
+
+        .Cards-inference{
+            position:absolute;
+        }
+        .last-time{
+            height: 150px;
+            width: 250px;
+            padding: 30px;
+            box-shadow: 0px 5px 15px $default-gray;
+            border-radius: 10px;
+
+            .date{
+                margin: 30px 0 30px 0;
+            }
+        }
+        .detail{
+            width: 100%;
+            border: 1px solid black;
+          }
+        .inferred{
+            height: 150px;
+            width: 250px;
+            padding: 30px;
+            box-shadow: 0px 5px 15px $default-gray;
+            border-radius: 10px;
+            .inference{
+                display: flex;
+                margin-top: 55px;
+                h2{
+                    margin: auto;
+                }
+
+            }
+        }
+    }
+    .graphic{
+        width: 500px;
+        margin: auto;
+        margin-top: 20px;
+        padding: 30px;
+        box-shadow: 0px 5px 15px $default-gray;
+        border-radius: 10px;
+    }
+}

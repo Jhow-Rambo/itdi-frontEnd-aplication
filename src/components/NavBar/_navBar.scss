@@ -1,0 +1,25 @@
+.nav{
+    display: flex;
+    width: 100vw;
+    height: 50px;
+    align-items: center;
+    //justify-content: space-between;
+    background-color: $purple;
+    position: absolute;
+    //margin-left: 250px;
+    .title{
+        margin-left: 50px;
+    }
+    .options{
+        margin-left: auto;
+        .downloadExcel:hover{
+            background-color: $green;
+        }
+    }
+    .space{
+        width: 250px;
+        height: 50px;
+    }
+
+}
+

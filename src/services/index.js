@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const url = 'https://itdi-test-api.herokuapp.com/'
-
+//http://localhost:8000/ 
 const axiosInstance = axios.create({
     baseURL: url
 });

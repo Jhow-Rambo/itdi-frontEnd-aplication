@@ -24,6 +24,8 @@
 <script>
 import Vue from 'vue'
 import VueApexCharts from 'vue-apexcharts'
+import { api } from '@/services/index';
+import { mapActions, mapGetters } from 'vuex';
 Vue.use(VueApexCharts)
 
 Vue.component('apexchart', VueApexCharts)
@@ -45,6 +47,26 @@ export default {
             data: [20, 10, 13, 2, 30, 1, 3, 1]
         }]
     }
+  },
+  created() {
+    this.getInference()
+  },
+  computed: {
+    ...mapGetters(['getSelectedInference'])
+  },
+  methods: {
+    ...mapActions([ 'setInferences' ]),
+    getInference() {
+        api
+        .get('/inference')
+        .then((response)=>{
+            this.setInferences(response.data); 
+        })
+        .catch((error)=>{
+            console.log(error.response)
+            this.$vToastify.error('Não foi possível obter os dados!');
+        })
+    },
   }
 }
 </script>

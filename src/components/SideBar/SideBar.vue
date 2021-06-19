@@ -11,10 +11,11 @@
           <div @click="changeSection('Inference')" class="li-container">
               <li>Inference</li>
           </div>
+          <!--
           <div @click="changeSection('Inventory')" class="li-container">
               <li>Inventory</li>
           </div>
-
+          -->
       </ul>
       <footer>
           <p>Created by Jhonatan</p>

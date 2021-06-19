@@ -1,19 +1,19 @@
 export default {
     state: {
-        inference: {},
+        inferences: null,
         selectedInference: {}
     },
     getters: {
         getInferences: (state) => {
-            return state.inference;
+            return state.inferences;
         },
         getSelectedInference: (state) => {
             return state.selectedInference;
         }
     },
     mutations: {
-        SET_INFERENCE: (state, payload) => {
-            state.inference = payload;
+        SET_INFERENCES: (state, payload) => {
+            state.inferences = payload;
         },
         SET_SELECTED_INFERENCE: (state, payload) => {
             state.selectedInference = payload
@@ -24,7 +24,7 @@ export default {
     },
     actions: {
         setInferences: ({ commit }, payload) => {
-            commit('SET_INFERENCE', payload);
+            commit('SET_INFERENCES', payload);
         },
         setSelectedInference: ({ commit }, payload) => {
             commit('SET_SELECTED_INFERENCE', payload);

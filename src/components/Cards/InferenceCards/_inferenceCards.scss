@@ -7,6 +7,8 @@
 
 .Inference{
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .sectionContainer{
@@ -20,13 +22,20 @@ img{
 
 .mainDashboardCardsContainer{
     display: flex;
+    width: 960px;
+    padding: .75rem;
+    //justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    .containerCards{
+        margin: 0 auto;
+    }
     .cardContainer{
         margin: 10px;
     }
 }
 
 .inferenceContainer{
-
     margin: 70px 20px 50px 20px;
     display: flex;
     flex-wrap: wrap;

@@ -22,7 +22,7 @@
                 <div class="detail"></div>
                 <div class="informations">
                     <div class="inference">
-                        <p>Inference: Person - 80%</p>
+                        <p>Inference: {{getInference(inference.inference)}}</p>
                     </div>
                     <div class="data">
                         <p>{{inference.created_at}}</p>
@@ -83,6 +83,13 @@ export default {
         resetImages(){
             this.normalImageSelected = ''
             this.inferredImageSelected = ''
+        },
+        getInference(inference){
+            let Inference = []
+            for (var index in inference){
+                Inference = index + ' - ' + inference[index] + '%'
+            }
+            return Inference
         }
     }
 

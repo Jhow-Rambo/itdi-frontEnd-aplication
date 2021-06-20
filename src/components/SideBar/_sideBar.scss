@@ -3,7 +3,7 @@
     .sidebar-container{
         color: $black;
         width: 250px;
-        height: 100vh;
+        min-height: 100vh;
         background-color: $gray;
         box-shadow: 0px 0px 15px $black;
         position: relative;
@@ -51,7 +51,7 @@
     
     .main-cards-container{
         width: 100%;
-        margin: 70px 20px 0px 20px;
+        margin: 60px 20px 0px 20px;
         display: flex;
         flex-wrap: wrap;
     }

@@ -6,7 +6,7 @@
       </div>
       <div class="options">
           <button @click="error" class="downloadExcel">Download Inventory</button>
-          <button @click="error">Logout</button>
+          <button class="buttonLogout" @click="error">Logout</button>
       </div>
   </div>
 </template>

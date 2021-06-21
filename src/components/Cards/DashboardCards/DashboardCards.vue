@@ -84,7 +84,7 @@ export default {
     setWidthGraphic(){
         let windowWidth = window.innerWidth;
         if (windowWidth >= 600) return 500
-        else if(windowWidth <= 600) return 450
+        else if(windowWidth <= 600) return 300
     }
   }
 }

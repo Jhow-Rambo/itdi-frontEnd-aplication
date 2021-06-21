@@ -54,7 +54,14 @@ img{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    @include for-mobile-dw-600{
+        display: block;
+    }
     .icon-return{
+        @include for-mobile-dw-600{
+            display: block;
+            margin-right: auto;
+        }
         margin-bottom: 30px;
         margin-right: 20px;
         font-size: 50px;
@@ -95,11 +102,14 @@ img{
             border-right-style: solid;
             border-right-color: #000;
             @include for-tablet-dw-1180{
+                margin: auto;
+                width: 300px;
                 border: none;
                 border-bottom-width: 3px;
                 border-bottom-style: solid;
                 border-bottom-color: #000;
                 padding-bottom: 10px;
+                padding-right: 0px;
             }
         }
         .containerInferedImage{
@@ -108,7 +118,10 @@ img{
             width: 450px;
             margin-left: 10px;
             @include for-tablet-dw-1180{
+                margin: 10px auto auto auto !important;
+                width: 300px;
                 margin-top: 10px;
+                margin-left: 0px;
             }
         }
     }

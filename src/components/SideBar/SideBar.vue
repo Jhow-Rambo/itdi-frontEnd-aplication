@@ -52,6 +52,8 @@ export default {
             else return this.selectedSection = 'InventoryCards'
         },
         closeMenu(){
+           document.documentElement.style.overflow = 'auto';
+           document.body.scroll = "yes";
            document.getElementsByClassName('sidebar-container')[0].style.display = 'none'
            document.getElementsByClassName('section')[0].style.display = 'none'
            return

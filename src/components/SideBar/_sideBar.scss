@@ -1,3 +1,10 @@
+@include for-desktop-dw-1260 {
+    .sidebar-container{
+        display: none;
+        position: absolute !important;
+        z-index: 30;
+    } 
+}
 .main{
     display: flex;
     .sidebar-container{
@@ -48,7 +55,14 @@
         }
     
     }
-    
+    .section{
+        width: 100%;
+        height: 100vh;
+        display: none;
+        position: absolute;
+        background-color: rgba(20, 20, 20, 0.5);
+        z-index: 1;
+    }
     .main-cards-container{
         width: 100%;
         margin: 60px 20px 0px 20px;

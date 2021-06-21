@@ -1,17 +1,30 @@
 .cards-container{
     width: 100%;
     .info-inference{
+        @include for-tablet-dw-730{
+            display: block;
+            width: 310px;
+            height: auto;
+            .last-time{
+                margin-bottom: 20px;
+            }
+        }
+        @include for-big-desktop-up {
+            width: 900px;
+            height: 300px;
+        }
         display: flex;
+        margin: 0 auto;
         width: 700px;
         height: 214px;
-        margin: auto;
         margin-top: 20px;
         justify-content: space-between;
-
-        .Cards-inference{
-            position:absolute;
-        }
+        
         .last-time{
+            @include for-big-desktop-up {
+                width: 300px;
+                height: 200px;
+            }
             height: 150px;
             width: 250px;
             padding: 30px;
@@ -27,6 +40,10 @@
             border: 1px solid black;
           }
         .inferred{
+            @include for-big-desktop-up {
+                width: 300px;
+                height: 200px;
+            }
             height: 150px;
             width: 250px;
             padding: 30px;
@@ -43,6 +60,11 @@
         }
     }
     .graphic{
+        @include for-mobile-dw-600 {
+            width: 450px;
+            height: auto;
+            padding: 10px;  
+        }
         width: 500px;
         margin: auto;
         margin-top: 20px;

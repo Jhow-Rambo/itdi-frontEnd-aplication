@@ -21,6 +21,7 @@
           <p>Created by Jhonatan</p>
       </footer>
   </div>
+  <div class="section" @click="closeMenu()"></div>
   <div class="main-cards-container">
         <component :is='selectedSection'/>
   </div>
@@ -49,6 +50,11 @@ export default {
             if(section == 'Dashboard') return this.selectedSection = 'DashboardCards'
             else if(section == 'Inference') return this.selectedSection = 'InferenceCards'
             else return this.selectedSection = 'InventoryCards'
+        },
+        closeMenu(){
+           document.getElementsByClassName('sidebar-container')[0].style.display = 'none'
+           document.getElementsByClassName('section')[0].style.display = 'none'
+           return
         }
     }
 }

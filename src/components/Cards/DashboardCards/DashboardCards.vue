@@ -7,7 +7,7 @@
                     <div class="detail"></div>
                     <div class="date"><h2>Date: {{getLastInferenceDate(lastInference.created_at, 'date')}}</h2></div>
                     <div class="hour"><h2>Hour: {{getLastInferenceDate(lastInference.created_at, 'hour')}}</h2></div>
-                    </div>
+                </div>
                 <div class="inferred">
                     <h2>Inferred</h2>
                     <div class="detail"></div>
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="graphic">
-                <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+                <apexchart :width="setWidthGraphic()" type="bar" :options="options" :series="series"></apexchart>
             </div>
         </div>
     </div>
@@ -80,6 +80,11 @@ export default {
             let dates = inference.split(' ')
             if (DH == 'date') return dates[0]
             else return dates[1]
+    },
+    setWidthGraphic(){
+        let windowWidth = window.innerWidth;
+        if (windowWidth >= 600) return 500
+        else if(windowWidth <= 600) return 450
     }
   }
 }

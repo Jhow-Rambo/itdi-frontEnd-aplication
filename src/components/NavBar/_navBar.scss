@@ -7,10 +7,20 @@
     background-color: $purple;
     position: absolute;
     //margin-left: 250px;
+
     .title{
+        @include for-desktop-dw-1260{
+            margin: auto;
+        }
         margin-left: 50px;
     }
     .options{
+        @include for-desktop-dw-1260{
+            margin: 0;
+        }
+        @include for-tablet-dw-730 {
+            display: none;
+        }
         margin-left: auto;
         .downloadExcel:hover{
             background-color: $green;
@@ -21,6 +31,13 @@
         }
     }
     .space{
+        @include for-desktop-dw-1260 {
+            width: auto;
+            height: auto;
+            font-size: 30px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
         width: 250px;
         height: 50px;
     }

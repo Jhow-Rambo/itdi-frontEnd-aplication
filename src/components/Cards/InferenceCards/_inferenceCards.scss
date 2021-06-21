@@ -9,6 +9,9 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    @include for-desktop-up-1600 {
+        display: block;
+    }
 }
 
 .sectionContainer{
@@ -22,7 +25,18 @@ img{
 
 .mainDashboardCardsContainer{
     display: flex;
-    width: 960px;
+    @include for-desktop-down{
+        width: 960px;
+    }
+    @include for-desktop-up-1600 {
+        width: 1300px;
+    }
+    @include for-tablet-dw-1000{
+        width: 640px;
+    }
+    @include for-mobile-dw-680{
+        width: 300px;
+    }
     padding: .75rem;
     //justify-content: space-around;
     flex-wrap: wrap;
@@ -41,6 +55,8 @@ img{
     flex-wrap: wrap;
     width: 100%;
     .icon-return{
+        margin-bottom: 30px;
+        margin-right: 20px;
         font-size: 50px;
         cursor: pointer;
     }
@@ -53,6 +69,11 @@ img{
         height: 100%;
     }
     .infoContainer{
+        @include for-tablet-dw-1180 {
+            display: block;
+            height: auto;
+            width: auto;
+        }
         margin: auto;
         display: flex;
         height: 400px;
@@ -69,14 +90,26 @@ img{
             display: flex;
             height: 100%;
             width: 450px;
+            padding-right: 10px;
             border-right-width: 3px;
             border-right-style: solid;
             border-right-color: #000;
+            @include for-tablet-dw-1180{
+                border: none;
+                border-bottom-width: 3px;
+                border-bottom-style: solid;
+                border-bottom-color: #000;
+                padding-bottom: 10px;
+            }
         }
         .containerInferedImage{
             display: flex;
             height: 100%;
             width: 450px;
+            margin-left: 10px;
+            @include for-tablet-dw-1180{
+                margin-top: 10px;
+            }
         }
     }
     

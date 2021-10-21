@@ -11,16 +11,16 @@
         <div v-if="!toogle" class="mainDashboardCardsContainer">
             <div v-for="(toten, index) in fakeTotens" 
                 :key="index" 
-                class="cardContainer"
+                class="normalCardCotainer"
                 >
                 <div class="headerToten" @click="changeSection('cards')">
                     <div class="status"></div>
                     <div class="totenTitle">Toten Piloto</div>
                 </div>
                 <div class="description" @click="changeSection('cards')">
-                    <div>Localização: XXXX</div>
-                    <div>Descrição: XXXX</div>
-                    <div>Último envio: XXXX</div>
+                    <div>Localização: Trilha PTI</div>
+                    <div>Descrição: Toten de testes</div>
+                    <div>Último envio: xx/xx/xxxx</div>
                 </div>
                 <div class="detail"></div>
                 <div class="actions">
@@ -65,7 +65,8 @@ export default {
     created(){
         document.documentElement.style.overflow = 'visible';
         window.scrollTo(0, 0);
-        this.handleInferences()
+        this.handleInferences();
+        this.checkScreen();
     },
     computed: {
         ...mapGetters(['getInferences', 'getSelectedInference'])

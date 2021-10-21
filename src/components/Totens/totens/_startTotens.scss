@@ -87,8 +87,22 @@ img{
     .containerCards{
         margin: 0 auto;
     }
-    .cardContainer{
+    .normalCardCotainer{
         margin: 10px;
+        cursor: pointer;
+        width:  300px;
+        height: 300px;
+        background-color: white;
+        box-shadow: 0px 2px 2px $default-gray;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .detail{
+            //width: 100%;
+            border: 1px solid black;
+        }
+
         .headerToten {
             margin-top: 30px;
             display: flex;

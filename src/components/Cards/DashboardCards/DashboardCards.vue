@@ -17,7 +17,7 @@
                 </div>
                 <div class="graphic">
                     <div class="graphicContainer">
-                        <apexchart :width="setWidthGraphic()" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
+                        <apexchart :width="width" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
                     </div>
                 </div>
             </div>
@@ -51,6 +51,7 @@ export default {
             name: 'series-1',
             data: [20, 10, 13, 2, 30, 1, 3, 1]
         }],
+        width: 0,
         lastInference: null
     }
   },
@@ -58,6 +59,9 @@ export default {
     document.documentElement.style.overflow = 'visible';
     window.scrollTo(0, 0);
     this.getInference()
+  },
+  beforeMount() {
+      this.setWidthGraphic()
   },
   computed: {
     ...mapGetters(['getInferences', 'getSelectedInference'])
@@ -90,9 +94,9 @@ export default {
     },
     setWidthGraphic(){
         let windowWidth = window.innerWidth;
-        if (windowWidth >= 1900) return 1500
-        if (windowWidth >= 600) return 600
-        else if(windowWidth <= 600) return 410
+        if (windowWidth >= 1900) return this.width = 1500
+        if (windowWidth >= 600) return this.width = 600
+        else if(windowWidth <= 600) return this.width = 410
     },
     setHeightGraphic(){
         let windowWidth = window.innerWidth;

@@ -6,6 +6,10 @@
 }
 
 .circle {
+    @include for-mobile-dw-600 {
+        width:  30px;
+        height: 30px;
+    }
     display: block;
     border-radius: 50%;
     width:  50px;
@@ -17,6 +21,10 @@
     right: 10px;
     cursor: pointer;
     .upIcon {
+        @include for-mobile-dw-600 {
+            margin-top: 6px;
+            font-size: 30px;
+        }
         margin-top: 8px;
         font-size: 50px;
     }

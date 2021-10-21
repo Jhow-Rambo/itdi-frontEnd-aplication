@@ -30,9 +30,9 @@
         </footer>
     </div>
     <div class="section" @click="closeMenu()"></div>
-    <div class="main-cards-container">
-            <div class="lds-roller" v-if="hasData"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <!-- <component :is='selectedSection'/> -->
+    <div class="main-cards-container" v-if="hasData">
+        <div class="lds-roller" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <!-- <component :is='selectedSection'/> -->
     </div>
     </div>
 </template>

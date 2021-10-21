@@ -1,6 +1,12 @@
 <template>
-    <div class="main-cards-container">
-        <component :is='selectedSection' @event='selectComponent'/>
+    <div class="Container">
+        <div v-if="verifySelction" class="subNav">
+            <div class="space"></div>
+            <Button class="createTotenButton">Criar Token</Button>
+        </div>
+        <div class="main-cards-container">
+            <component :is='selectedSection' @event='selectComponent'/>
+        </div>
     </div>
 </template>
 
@@ -45,6 +51,10 @@ export default {
         selectComponent(payload) {
             if(payload == 'cards') return this.selectedSection = cards
             else if(payload == 'layoutToken') return this.selectedSection = layout
+        },
+        verifySelction() {
+            if(this.selectedSection == totens) return true
+            else return false
         },
         handleToogle() {
             this.toogle = !this.toogle

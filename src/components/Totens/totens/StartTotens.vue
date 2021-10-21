@@ -24,8 +24,8 @@
                 </div>
                 <div class="detail"></div>
                 <div class="actions">
-                    <button class="changeButton">Alterar</button>
-                    <button class="deletButton">Deletar</button>
+                    <button class="changeButton" @click="error">Alterar</button>
+                    <button class="deletButton" @click="error">Deletar</button>
                 </div>
             </div>
         </div>
@@ -71,6 +71,9 @@ export default {
         ...mapGetters(['getInferences', 'getSelectedInference'])
     },
     methods: {
+        error(){
+            this.$vToastify.error('Under Development...');
+        },
         changeSection(section){
             this.$emit('event', section)
         },

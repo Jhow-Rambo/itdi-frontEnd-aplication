@@ -32,7 +32,7 @@ export default {
         },
         showSidebar(){
            document.documentElement.style.overflow = 'hidden';
-        //    document.body.scroll = "no";
+           document.body.scroll = "no";
            document.getElementsByClassName('sidebar-container')[0].style.display = 'block'
            document.getElementsByClassName('section')[0].style.display = 'block'
            return

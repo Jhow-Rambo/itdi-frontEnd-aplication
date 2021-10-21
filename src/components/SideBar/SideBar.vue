@@ -6,18 +6,22 @@
             <h1>ITDT</h1>
         </div>
         <ul class="options">
-            <router-link to="/dashboard" class="li-container">
-                <div>
-                    <font-awesome-icon :icon="DashboardIcon"/>
-                    <li>Painel</li>
-                </div>
-            </router-link>
-            <router-link to='/totens' class="li-container">
-                <div>
-                    <font-awesome-icon :icon="TotensIcons"/>
-                    <li>Totens</li>
-                </div>
-            </router-link>
+            <div @click="checkScreen">
+                <router-link to="/dashboard" class="li-container">
+                    <div>
+                        <font-awesome-icon :icon="DashboardIcon"/>
+                        <li>Painel</li>
+                    </div>
+                </router-link>
+            </div>
+            <div @click="checkScreen">
+                <router-link to='/totens' class="li-container">
+                    <div>
+                        <font-awesome-icon :icon="TotensIcons"/>
+                        <li>Totens</li>
+                    </div>
+                </router-link>
+            </div>
             <div class="li-container">
                 <div>
                     <font-awesome-icon :icon="ConfIcon"/>
@@ -71,6 +75,13 @@ export default {
         }
     },
     methods:{
+        checkScreen() {
+            console.log(window.screen.width)
+            if(window.screen.width < 1250) {
+                document.getElementsByClassName('sidebar-container')[0].style.display = 'none'
+                document.getElementsByClassName('section')[0].style.display = 'none'
+            }
+        },
         changeSection(section){
             if(section == 'Dashboard') return this.selectedSection = 'DashboardCards'
             else if(section == 'Inference') return this.selectedSection = 'InferenceCards'

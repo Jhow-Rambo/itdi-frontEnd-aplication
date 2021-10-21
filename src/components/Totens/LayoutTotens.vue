@@ -1,8 +1,11 @@
 <template>
     <div class="Container">
-        <div v-if="verifySelction" class="subNav">
+        <div v-if="isTotensSection" class="subNav">
             <div class="space"></div>
-            <Button class="createTotenButton">Criar Token</Button>
+            <div class="buttons-container">
+                <Button class="downloadButton" @click="isTotenSelected">Baixar métricas</Button>
+                <Button class="createTotenButton">Criar Token</Button>
+            </div>
         </div>
         <div class="main-cards-container">
             <component :is='selectedSection' @event='selectComponent'/>
@@ -49,12 +52,21 @@ export default {
     },
     methods: {
         selectComponent(payload) {
+            console.log(payload)
             if(payload == 'cards') return this.selectedSection = cards
             else if(payload == 'layoutToken') return this.selectedSection = layout
         },
-        verifySelction() {
-            if(this.selectedSection == totens) return true
+        isTotensSection() {
+            if(this.selectedSection == layout) return true
             else return false
+        },
+        isTotenSelected() {
+            if(this.selectedSection == layout) {
+                this.$vToastify.error('Selecione um Toten');
+            }
+            else {
+                this.$vToastify.success('Baixando...');
+            }
         },
         handleToogle() {
             this.toogle = !this.toogle

@@ -7,7 +7,6 @@
           <h2>Bem vindo!</h2>
       </div>
       <div class="options">
-          <button @click="error" class="downloadExcel">Baixar Métricas</button>
           <button class="buttonLogout" @click="error">Sair</button>
       </div>
   </div>

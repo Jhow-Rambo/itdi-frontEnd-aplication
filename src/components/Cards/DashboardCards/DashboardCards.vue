@@ -16,7 +16,9 @@
                     </div>
                 </div>
                 <div class="graphic">
-                    <apexchart :width="setWidthGraphic()" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
+                    <div class="graphicContainer">
+                        <apexchart :width="setWidthGraphic()" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,7 +92,7 @@ export default {
         let windowWidth = window.innerWidth;
         if (windowWidth >= 1900) return 1500
         if (windowWidth >= 600) return 1180
-        else if(windowWidth <= 600) return 410
+        else if(windowWidth <= 600) return 310
     },
     setHeightGraphic(){
         let windowWidth = window.innerWidth;

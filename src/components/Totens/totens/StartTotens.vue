@@ -73,7 +73,7 @@ export default {
     },
     methods: {
         error(){
-            this.$vToastify.error('Under Development...');
+            this.$vToastify.error('Em desenvolvimento...');
         },
         changeSection(section){
             this.$emit('event', section)

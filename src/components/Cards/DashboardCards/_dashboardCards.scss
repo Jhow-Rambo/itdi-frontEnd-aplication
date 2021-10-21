@@ -176,5 +176,9 @@
         margin-top: 50px;
         box-shadow: 0px 5px 15px $default-gray;
         border-radius: 10px;
+
+        .graphicContainer {
+          margin: auto;
+        }
     }
 }

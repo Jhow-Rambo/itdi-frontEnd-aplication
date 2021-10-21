@@ -17,7 +17,7 @@
                 </div>
                 <div class="graphic">
                     <div class="graphicContainer">
-                        <apexchart :width="width" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
+                        <apexchart :width="setWidthGraphic()" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
                     </div>
                 </div>
             </div>

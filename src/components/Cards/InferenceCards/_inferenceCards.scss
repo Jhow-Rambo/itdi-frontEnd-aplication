@@ -106,7 +106,7 @@ img{
     margin: 70px 20px 50px 20px;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    max-width: 100%;
     @include for-mobile-dw-600{
         display: block;
     }

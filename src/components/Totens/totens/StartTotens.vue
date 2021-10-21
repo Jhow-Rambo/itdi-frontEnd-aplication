@@ -1,6 +1,5 @@
 <template>
     <div class="Inference">
-        <font-awesome-icon :icon="returnIcon" v-if="!toogle" class="first-icon-return" @click="changeSection('layoutToken')"/>
         <div v-if="toogle" class="inferenceContainer">
             <font-awesome-icon :icon="returnIcon" class="icon-return" @click="handleToogle(), resetImages()"/>
             <div class="infoContainer">
@@ -10,28 +9,27 @@
             <div class="space"></div>
         </div>
         <div v-if="!toogle" class="mainDashboardCardsContainer">
-            <div v-for="(inference, index) in getInferences" 
+            <div v-for="(toten, index) in fakeTotens" 
                 :key="index" 
-                @click="handleToogle(), setImages(inference.normal_image, inference.inferred_image)" 
                 class="cardContainer"
                 >
-                <div class="Image">
-                    <div class="icons">
-                        <img :src="imageLink(inference.normal_image)"/>
-                    </div>
+                <div class="headerToten" @click="changeSection('cards')">
+                    <div class="status"></div>
+                    <div class="totenTitle">Toten Piloto</div>
+                </div>
+                <div class="description" @click="changeSection('cards')">
+                    <div>Localização: XXXX</div>
+                    <div>Descrição: XXXX</div>
+                    <div>Último envio: XXXX</div>
                 </div>
                 <div class="detail"></div>
-                <div class="informations">
-                    <div class="inference">
-                        <p>Inferido: {{getInference(inference.inference)}}</p>
-                    </div>
-                    <div class="data">
-                        <p>{{inference.created_at}}</p>
-                    </div>
+                <div class="actions">
+                    <button class="changeButton">Alterar</button>
+                    <button class="deletButton">Deletar</button>
                 </div>
             </div>
         </div>
-        <div v-if="!toogle" class="circle" @click="toTop">
+        <div class="circle" @click="toTop">
             <font-awesome-icon :icon="upIcon" class="upIcon" />
         </div>
     </div>
@@ -56,11 +54,11 @@ export default {
             Image: faImage,
             returnIcon: faArrowAltCircleLeft,
             upIcon: faSortUp,
+            selectedSection: 'DashboardCards',
             selectedInference: {},
             toogle: false,
             items: null,
-            normalImageSelected: '',
-            inferredImageSelected: '',
+            fakeTotens: [0],
             images: []
         }
     },
@@ -73,36 +71,11 @@ export default {
         ...mapGetters(['getInferences', 'getSelectedInference'])
     },
     methods: {
-        toTop(){
-            window.scrollTo(0, 0);
-        },
         changeSection(section){
             this.$emit('event', section)
         },
-        handleToogle() {
-            this.toogle = !this.toogle
-        },
-        handleInferences(){
-            this.items = this.getSelectedInference
-            console.log(this.items)
-        },
-        imageLink(normal_image){
-            return normal_image
-        },
-        setImages(normal_image, inferred_image){
-            this.normalImageSelected = normal_image
-            this.inferredImageSelected = inferred_image
-        },
-        resetImages(){
-            this.normalImageSelected = ''
-            this.inferredImageSelected = ''
-        },
-        getInference(inference){
-            let Inference = []
-            for (var index in inference){
-                Inference = index + ' - ' + inference[index] + '%'
-            }
-            return Inference
+        toTop(){
+            window.scrollTo(0, 0);
         }
     }
 
@@ -110,5 +83,5 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-@import "./_inferenceCards.scss";
+@import "./_startTotens.scss";
 </style>

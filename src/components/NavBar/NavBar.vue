@@ -4,11 +4,11 @@
           <font-awesome-icon :icon="returnIcon" class="options-icon" @click="showSidebar()"/>
       </div>
       <div class="title">
-          <h2>Bem vindo Rolf!</h2>
+          <h2>Bem vindo!</h2>
       </div>
       <div class="options">
-          <button @click="error" class="downloadExcel">Download Inventory</button>
-          <button class="buttonLogout" @click="error">Logout</button>
+          <button @click="error" class="downloadExcel">Baixar Métricas</button>
+          <button class="buttonLogout" @click="error">Sair</button>
       </div>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
         },
         showSidebar(){
            document.documentElement.style.overflow = 'hidden';
-           document.body.scroll = "no";
+        //    document.body.scroll = "no";
            document.getElementsByClassName('sidebar-container')[0].style.display = 'block'
            document.getElementsByClassName('section')[0].style.display = 'block'
            return

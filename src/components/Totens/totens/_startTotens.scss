@@ -29,6 +29,7 @@
   transform: scale(1.08);
 }
 
+
 .main-cards-container{
     @include for-desktop-dw-1260 {
         margin: 40px 10px 10px 10px;
@@ -39,20 +40,9 @@
     flex-wrap: wrap;
 }
 
-.first-icon-return {
-    font-size: 50px;
-    display: block;
-    left: 0;
-    margin-left: 50px;
-    cursor: pointer;
-    @include for-desktop-dw-1260 {
-        margin-bottom: 20px;
-    }
-}
-
 .Inference{
     width: 100%;
-    display: block !important;
+    display: flex;
     flex-wrap: wrap;
     @include for-desktop-up-1600 {
         display: block;
@@ -91,6 +81,63 @@ img{
     }
     .cardContainer{
         margin: 10px;
+        .headerToten {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .status {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: $green;
+            }
+            .totenTitle {
+                margin-left: 10px;
+                font-size: 30px;
+                font-weight: 500;
+            }
+        }
+        .description {
+            font-size:larger;
+            margin: 25px 0px;
+            display: block;
+            div{
+                padding: 10px;
+                display: block;
+                text-align: left;
+                margin-left: 10px;
+                width: auto;
+            }
+        }
+        .actions {
+            align-items: center;
+            display: flex;
+            justify-content:space-between;
+            height: 100%;
+            margin: 0px 10px 0px 10px;
+            button {
+                display: block;
+                height: 80%;
+                border-radius: 5%;
+                font-size: 20px;
+                background-color: white;
+            }
+            .changeButton {
+                color: $yellow;
+                font-weight: 700;
+            }
+            .changeButton:hover {
+                background-color: #ffd16642;
+            }
+            .deletButton {
+                color: $red;
+                font-weight: 700;
+            }
+            .deletButton:hover {
+                background-color: #ef476e42;
+            }
+        }
     }
 }
 

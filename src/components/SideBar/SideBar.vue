@@ -1,48 +1,73 @@
 <template>
-<div class="main">
-  <div class="sidebar-container">
-      <div class="logo-container">
-        <h1>ITDI</h1>
-      </div>
-      <ul class="options">
-          <div @click="changeSection('Dashboard')" class="li-container">
-              <li>Dashboard</li>
-          </div>
-          <div @click="changeSection('Inference')" class="li-container">
-              <li>Inference</li>
-          </div>
-          <!--
-          <div @click="changeSection('Inventory')" class="li-container">
-              <li>Inventory</li>
-          </div>
-          -->
-      </ul>
-      <footer>
-          <p>Created by Jhonatan</p>
-      </footer>
-  </div>
-  <div class="section" @click="closeMenu()"></div>
-  <div class="main-cards-container">
-        <component :is='selectedSection'/>
-  </div>
-</div>
+    <div class="main">
+        <div class="space"></div>
+    <div class="sidebar-container">
+        <div class="logo-container">
+            <h1>ITDT</h1>
+        </div>
+        <ul class="options">
+            <router-link to="/dashboard" class="li-container">
+                <div>
+                    <font-awesome-icon :icon="DashboardIcon"/>
+                    <li>Painel</li>
+                </div>
+            </router-link>
+            <router-link to='/totens' class="li-container">
+                <div>
+                    <font-awesome-icon :icon="TotensIcons"/>
+                    <li>Totens</li>
+                </div>
+            </router-link>
+            <div class="li-container">
+                <div>
+                    <font-awesome-icon :icon="ConfIcon"/>
+                    <li>Configurações</li>
+                </div>
+            </div>
+        </ul>
+        <footer>
+            <p>Fundação Parque Tecnológico de Itaipu</p>
+        </footer>
+    </div>
+    <div class="section" @click="closeMenu()"></div>
+    <div class="main-cards-container">
+            <div class="lds-roller" v-if="hasData"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <!-- <component :is='selectedSection'/> -->
+    </div>
+    </div>
 </template>
 
 <script>
-import DashboardCards from '../Cards/DashboardCards/DashboardCards.vue'
-import InferenceCards from '../Cards/InferenceCards/InferenceCards.vue'
-import InventoryCards from '../Cards/InventoryCards/InventoryCards.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faChartArea } from '@fortawesome/free-solid-svg-icons'
+import { faDesktop } from '@fortawesome/free-solid-svg-icons'
+import { mapGetters } from 'vuex';
+import { faCog } from '@fortawesome/free-solid-svg-icons'
+// import DashboardCards from '../Cards/DashboardCards/DashboardCards.vue'
+// import InferenceCards from '../Cards/InferenceCards/InferenceCards.vue'
+// import InventoryCards from '../Cards/InventoryCards/InventoryCards.vue'
 
 export default {
     name: "sideBar",
     components:{
-        DashboardCards,
-        InferenceCards,
-        InventoryCards
+        FontAwesomeIcon
     },
     data(){
         return{
-            selectedSection: 'DashboardCards'
+            selectedSection: 'DashboardCards',
+            DashboardIcon: faChartArea,
+            TotensIcons: faDesktop,
+            ConfIcon: faCog
+        }
+    },
+    computed: {
+        ...mapGetters(['getInferences', 'getSelectedInference']),
+        hasData: function () {
+            if(this.getInferences === null) {
+                console.log('entrou')
+                return true
+            } 
+            else return false
         }
     },
     methods:{
@@ -57,7 +82,7 @@ export default {
            document.getElementsByClassName('sidebar-container')[0].style.display = 'none'
            document.getElementsByClassName('section')[0].style.display = 'none'
            return
-        }
+        },
     }
 }
 </script>

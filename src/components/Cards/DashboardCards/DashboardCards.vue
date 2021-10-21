@@ -1,24 +1,27 @@
 <template>
-    <div class="cards-container">
-        <div class="Cards-inference">
-            <div class="info-inference">
-                <div class="last-time">
-                    <h2>Last Time Inferred</h2>
-                    <div class="detail"></div>
-                    <div class="date"><h2>Date: {{getLastInferenceDate(lastInference.created_at, 'date')}}</h2></div>
-                    <div class="hour"><h2>Hour: {{getLastInferenceDate(lastInference.created_at, 'hour')}}</h2></div>
+    <div class="main-cards-container">
+        <div class="cards-container">
+            <div class="Cards-inference">
+                <div class="info-inference">
+                    <div class="last-time">
+                        <h2>Última Detecção</h2>
+                        <div class="detail"></div>
+                        <div class="date"><h2>Data: {{getLastInferenceDate(lastInference.created_at, 'date')}}</h2></div>
+                        <div class="hour"><h2>Hora: {{getLastInferenceDate(lastInference.created_at, 'hour')}}</h2></div>
+                    </div>
+                    <div class="inferred">
+                        <h2>Detectado</h2>
+                        <div class="detail"></div>
+                        <div class="inference"><h2>{{getLastInference(lastInference.inference)}}</h2></div>
+                    </div>
                 </div>
-                <div class="inferred">
-                    <h2>Inferred</h2>
-                    <div class="detail"></div>
-                    <div class="inference"><h2>{{getLastInference(lastInference.inference)}}</h2></div>
+                <div class="graphic">
+                    <apexchart :width="setWidthGraphic()" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
                 </div>
-            </div>
-            <div class="graphic">
-                <apexchart :width="setWidthGraphic()" type="bar" :options="options" :series="series"></apexchart>
             </div>
         </div>
     </div>
+    
 </template>
 
 <script>
@@ -50,10 +53,12 @@ export default {
     }
   },
   created() {
+    document.documentElement.style.overflow = 'visible';
+    window.scrollTo(0, 0);
     this.getInference()
   },
   computed: {
-    ...mapGetters(['getSelectedInference'])
+    ...mapGetters(['getInferences', 'getSelectedInference'])
   },
   methods: {
     ...mapActions([ 'setInferences' ]),
@@ -83,7 +88,14 @@ export default {
     },
     setWidthGraphic(){
         let windowWidth = window.innerWidth;
-        if (windowWidth >= 600) return 500
+        if (windowWidth >= 1900) return 1500
+        if (windowWidth >= 600) return 1180
+        else if(windowWidth <= 600) return 410
+    },
+    setHeightGraphic(){
+        let windowWidth = window.innerWidth;
+        if (windowWidth >= 1900) return 500
+        if (windowWidth >= 600) return 300
         else if(windowWidth <= 600) return 300
     }
   }

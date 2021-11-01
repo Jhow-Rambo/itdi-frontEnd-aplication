@@ -45,7 +45,7 @@
                                 color="#7CB342"
                                 dark
                                 large
-                                class="px-12"
+                                class="px-12 mr-2"
                                 @click="submit"
                                 >
                                     Criar
@@ -57,7 +57,7 @@
                                     dark
                                     large
                                     @click="clear"
-                                    class="px-12"
+                                    class="px-12 ml-2"
                                 >
                                     Limpar
                                 </v-btn>

@@ -42,12 +42,10 @@
                 <v-col cols="12" class="mb-6">
                     <v-card
                         id="graphic-card"
-                        class="mx-auto mt-6"
+                        class="mt-6"
                         elevation="2" outlined
                     >
-                        <div class="graphicContainer">
-                            <apexchart :width="setWidthGraphic()" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
-                        </div>
+                        <apexchart class="graphicContainer" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
                         <!-- <v-divider class=""></v-divider> -->
                         <v-card-actions class="mr-4">
                             <v-btn
@@ -157,15 +155,15 @@ export default {
     setWidthGraphic(){
         console.log(document.getElementById('graphic-card'))
         let windowWidth = window.innerWidth;
-        if (windowWidth >= 1900) return this.width = 1600
-        if (windowWidth >= 600) return this.width = 1200
-        else if(windowWidth <= 600) return this.width = 330
+        if (windowWidth >= 1900) return 1600
+        if (windowWidth >= 600) return 1200
+        else if(windowWidth <= 600) return 330
     },
     setHeightGraphic(){
         let windowWidth = window.innerWidth;
         if (windowWidth >= 1900) return 500
         if (windowWidth >= 600) return 300
-        else if(windowWidth <= 600) return 380
+        else if(windowWidth <= 600) return 250
     }
   }
 }

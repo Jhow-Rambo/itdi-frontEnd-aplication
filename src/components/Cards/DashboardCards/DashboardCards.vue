@@ -165,7 +165,7 @@ export default {
         let windowWidth = window.innerWidth;
         if (windowWidth >= 1900) return 500
         if (windowWidth >= 600) return 300
-        else if(windowWidth <= 600) return 370
+        else if(windowWidth <= 600) return 380
     }
   }
 }

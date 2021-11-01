@@ -5,6 +5,20 @@
     margin: auto;
 }
 
+.info-detections {
+    justify-content: start;
+    width: auto;
+}
+
+.row-info-toten {
+    display: flex;
+    align-items: center;
+    padding: 5px 8px;
+    h4 {
+        padding-right: 8px;
+    }
+}
+
 .circle {
     @include for-mobile-dw-600 {
         width:  30px;
@@ -51,7 +65,7 @@
     font-size: 50px;
     display: block;
     left: 0;
-    margin-left: 50px;
+    // margin-left: 50px;
     cursor: pointer;
     @include for-desktop-dw-1260 {
         margin-bottom: 20px;

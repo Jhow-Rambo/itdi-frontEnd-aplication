@@ -1,48 +1,49 @@
 <template>
     <div class="main">
-        <div class="space"></div>
-    <div class="sidebar-container">
-        <div class="logo-container">
-            <h1>ITDT</h1>
-        </div>
-        <ul class="options">
-            <div @click="checkScreen">
-                <router-link to="/dashboard" class="li-container">
-                    <div>
-                        <font-awesome-icon :icon="DashboardIcon"/>
-                        <li>Painel</li>
-                    </div>
-                </router-link>
-            </div>
-            <div @click="checkScreen">
-                <router-link to='/totens' class="li-container">
-                    <div>
-                        <font-awesome-icon :icon="TotensIcons"/>
-                        <li>Totens</li>
-                    </div>
-                </router-link>
-            </div>
-            <div class="li-container">
-                <div>
-                    <font-awesome-icon :icon="ConfIcon"/>
-                    <li>Configurações</li>
-                </div>
-            </div>
-        </ul>
-        <footer>
-            <p>Fundação Parque Tecnológico de Itaipu</p>
-        </footer>
-    </div>
-    <div class="section" @click="closeMenu()"></div>
-    <div class="main-cards-container" v-if="hasData">
-        <div class="lds-roller" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-        <!-- <component :is='selectedSection'/> -->
-    </div>
+    <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="d-lg-none px-4 pt-2 test"></v-app-bar-nav-icon> -->
+        <v-icon @click.stop="showSideBar" class="d-lg-none px-4 test">{{'mdi-menu'}}</v-icon> 
+        <v-navigation-drawer app dark mobile-breakpoint="1264" v-model="drawer" class="sideBar">
+            <v-list-item color="lime lighten-3" class="logo">
+                <v-list-item-content>
+                    <v-list-item-title class="text-h9">
+                        ITDT
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+
+            <v-divider></v-divider>
+
+            <v-list
+                dense
+                nav
+            >
+                <v-list-item
+                v-for="item in items"
+                :key="item.title"
+                :to="item.path"
+                
+                >
+                    <v-list-item-icon>
+                        <v-icon color="#00C853">{{ item.icon }}</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+            <v-icon>{{TotensIcons}}</v-icon>
+            <footer absolute dark>
+                <img src="@/assets/logo-pti.png" class="logoPTI"/>
+            </footer>
+        </v-navigation-drawer>
+
+        
     </div>
 </template>
 
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faChartArea } from '@fortawesome/free-solid-svg-icons'
 import { faDesktop } from '@fortawesome/free-solid-svg-icons'
 import { mapGetters } from 'vuex';
@@ -54,14 +55,21 @@ import { faCog } from '@fortawesome/free-solid-svg-icons'
 export default {
     name: "sideBar",
     components:{
-        FontAwesomeIcon
+        // FontAwesomeIcon
     },
     data(){
         return{
             selectedSection: 'DashboardCards',
             DashboardIcon: faChartArea,
             TotensIcons: faDesktop,
-            ConfIcon: faCog
+            ConfIcon: faCog,
+            items: [
+                { title: 'Painel', icon: 'mdi-chart-line', path: '/dashboard'  },
+                { title: 'Totens', icon: 'mdi-projector-screen-outline', path: '/totens' },
+                { title: 'Configurações', icon: 'mdi-cog-outline' },
+            ],
+            right: null,
+            drawer: null,
         }
     },
     computed: {
@@ -75,6 +83,9 @@ export default {
         }
     },
     methods:{
+        showSideBar() {
+            this.drawer = !this.drawer
+        },
         checkScreen() {
             console.log(window.screen.width)
             if(window.screen.width < 1250) {

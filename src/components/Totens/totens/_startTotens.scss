@@ -5,6 +5,24 @@
     margin: auto;
 }
 
+.card-toten-title {
+    background-color: $green;
+    // cursor: pointer;
+}
+
+.row-info-toten {
+    display: flex;
+    align-items: center;
+    padding: 5px 8px;
+    h4 {
+        padding-right: 8px;
+    }
+}
+.informations-toten {
+    font-size: 15px;
+    align-items: center;
+}
+
 .circle {
     @include for-mobile-dw-600 {
         width:  30px;

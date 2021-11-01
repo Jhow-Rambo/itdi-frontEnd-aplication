@@ -1,28 +1,86 @@
 <template>
-    <div class="main-cards-container">
-        <div class="cards-container">
-            <div class="Cards-inference">
-                <div class="info-inference">
-                    <div class="last-time">
-                        <h2>Última Detecção</h2>
-                        <div class="detail"></div>
-                        <div class="date"><h2>Data: {{getLastInferenceDate(lastInference.created_at, 'date')}}</h2></div>
-                        <div class="hour"><h2>Hora: {{getLastInferenceDate(lastInference.created_at, 'hour')}}</h2></div>
-                    </div>
-                    <div class="inferred">
-                        <h2>Detectado</h2>
-                        <div class="detail"></div>
-                        <div class="inference"><h2>{{getLastInference(lastInference.inference)}}</h2></div>
-                    </div>
-                </div>
-                <div class="graphic">
-                    <div class="graphicContainer">
-                        <apexchart :width="setWidthGraphic()" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <v-main>
+        <v-container fluid class="px-8">
+            <v-row>
+                <v-col cols="12" lg="5" md="5">
+                    <v-card elevation="2" outlined min-height="133">
+                        <v-card-title class="px-4 font-weight-bold header-2 justify-center text-h5">Última detecção</v-card-title>
+                        <v-divider class="mx-4"></v-divider>
+                        <v-card-text>
+                            <v-row>
+                                <v-card-subtitle 
+                                class="my-2 px-6 text-subtitle-1 sub-title font-weight-medium"
+                                >
+                                Data: {{getLastInferenceDate(lastInference.created_at, 'date')}}</v-card-subtitle>
+                            </v-row>
+                            <v-row>
+                                <v-card-subtitle 
+                                class="my-2 px-6 text-subtitle-1 sub-title font-weight-medium"
+                                >
+                                Hora: {{getLastInferenceDate(lastInference.created_at, 'hour')}}</v-card-subtitle>
+                            </v-row>
+                        </v-card-text>
+                    </v-card>
+                </v-col>
+                <v-spacer></v-spacer>
+                <v-col cols="12" lg="5" md="5" class="mt-lg-0 mt-md-0 mt-6">
+                    <v-card elevation="2" outlined min-height="133">
+                        <v-card-title class="px-4 font-weight-bold header-2 justify-center text-h5">Detectado</v-card-title>
+                        <v-divider class="mx-4"></v-divider>
+                        <v-card-text>
+                            <v-row justify="center" class="mt-6">
+                                <v-card-subtitle 
+                                class="my-2 px-6 text-subtitle-1 sub-title font-weight-medium"
+                                >
+                                {{getLastInference(lastInference.inference)}}</v-card-subtitle>
+                            </v-row>
+                        </v-card-text>
+                    </v-card>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col cols="12" class="mb-6">
+                    <v-card
+                        id="graphic-card"
+                        class="mx-auto mt-6"
+                        elevation="2" outlined
+                    >
+                        <div class="graphicContainer">
+                            <apexchart :width="setWidthGraphic()" :height="setHeightGraphic()" type="bar" :options="options" :series="series"></apexchart>
+                        </div>
+                        <!-- <v-divider class=""></v-divider> -->
+                        <v-card-actions class="mr-4">
+                            <v-btn
+                                color="orange lighten-2"
+                                text
+                                class="ml-4"
+                            >
+                                Atualizar
+                            </v-btn>
+
+                            <v-spacer></v-spacer>
+
+                            <v-btn
+                                icon
+                                @click="expand = !expand"
+                            >
+                                <v-icon>{{ expand ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                            </v-btn>
+                        </v-card-actions>
+                        <v-expand-transition>
+                            <div v-show="expand">
+                                <v-divider></v-divider>
+
+                                <v-card-text class="d-flex justify-start pa-4 text-justify">
+                                Métrica referente a quantidade total de objetos identificados em todos os Totens.
+                                </v-card-text>
+                            </div>
+                        </v-expand-transition>
+                    </v-card>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-main>
     
 </template>
 
@@ -30,6 +88,7 @@
 import Vue from 'vue'
 import VueApexCharts from 'vue-apexcharts'
 import { api } from '@/services/index';
+import { faChartArea } from '@fortawesome/free-solid-svg-icons'
 import { mapActions, mapGetters } from 'vuex';
 Vue.use(VueApexCharts)
 
@@ -39,6 +98,9 @@ export default {
     name: "DashboardCards",
     data () {
     return {
+        show: false,
+        expand: false,
+        DashboardIcon: faChartArea,
         options: {
             chart: {
             id: 'vuechart-example'
@@ -64,7 +126,7 @@ export default {
       this.setWidthGraphic()
   },
   computed: {
-    ...mapGetters(['getInferences', 'getSelectedInference'])
+    ...mapGetters(['getInferences', 'getSelectedInference']),
   },
   methods: {
     ...mapActions([ 'setInferences' ]),
@@ -93,9 +155,10 @@ export default {
             else return dates[1]
     },
     setWidthGraphic(){
+        console.log(document.getElementById('graphic-card'))
         let windowWidth = window.innerWidth;
-        if (windowWidth >= 1900) return this.width = 1500
-        if (windowWidth >= 600) return this.width = 600
+        if (windowWidth >= 1900) return this.width = 1600
+        if (windowWidth >= 600) return this.width = 1200
         else if(windowWidth <= 600) return this.width = 300
     },
     setHeightGraphic(){

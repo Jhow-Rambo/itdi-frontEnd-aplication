@@ -10,6 +10,43 @@
         display: none;
     }
 }
+
+.sideBar {
+  display: block;
+}
+
+footer{
+  position: absolute;
+  color: white;
+  bottom: 10px;
+  width: 100%;
+  p {
+      font-size: 13px;
+  }
+}
+
+.test {
+  display: block;
+  left: 0;
+  width: 70px;
+  align-items: center;
+  text-align: center;
+  color: white !important;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.logo {
+  background-color: #272727;
+}
+
+.logoPTI {
+  width: 160px;
+  @include for-tablet-dw-1264{
+    width: 120px;
+  }
+}
+
 .main{
     display: flex;
     height: 50px;
@@ -20,9 +57,7 @@
     }
     .sidebar-container{
         color: $black;
-        width: 250px;
         min-height: 100vh;
-        background-color: $light-gray;
         // background-image: url('../../assets/sidebar.jpg');
         // background-repeat: no-repeat;
         
@@ -78,14 +113,6 @@
             }
     
             
-        }
-        footer{
-           position: absolute;
-           bottom: 10px;
-           width: 100%;
-           p {
-               font-size: 13px;
-           }
         }
     
     }

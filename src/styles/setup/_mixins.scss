@@ -34,6 +34,9 @@
 @mixin for-desktop-dw-1260 {
   @media (max-width: 1260px) { @content; }
 }
+@mixin for-tablet-dw-1264 {
+  @media (max-width: 1264px) { @content; }
+}
 @mixin for-desktop-down{
   @media (max-width: 1600px) { @content; }
 }

@@ -1,25 +1,27 @@
 <template>
-  <div class="nav">
-      <div class="space">
-          <font-awesome-icon :icon="returnIcon" class="options-icon" @click="showSidebar()"/>
-      </div>
-      <div class="title">
-          <h2>Bem vindo!</h2>
-      </div>
-      <div class="options">
-          <button class="buttonLogout" @click="error">Sair</button>
-      </div>
-  </div>
+  <v-app-bar app absolute dense dark>
+    <v-spacer class="d-lg-none"></v-spacer>
+    <v-subheader>Inventário de Fauna</v-subheader>
+    <v-spacer/>
+    <v-btn
+        text
+        color="#EF5350"
+        small
+        large
+        >
+        Sair
+    </v-btn>
+  </v-app-bar>
 </template>
 
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 export default {
     name: "navBar",
     components: {
-        FontAwesomeIcon
+        // FontAwesomeIcon
     },
     data(){
         return {
@@ -42,5 +44,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './_navBar.scss'
+// @import './_navBar.scss'
 </style>

@@ -1,5 +1,5 @@
-<template>
-    <div class="Inference">
+<template>    
+    <v-container fluid>
         <font-awesome-icon :icon="returnIcon" v-if="!toogle" class="first-icon-return" @click="changeSection('layoutToken')"/>
         <div v-if="toogle" class="inferenceContainer">
             <font-awesome-icon :icon="returnIcon" class="icon-return" @click="handleToogle(), resetImages()"/>
@@ -9,32 +9,84 @@
             </div>
             <div class="space"></div>
         </div>
-        <div v-if="!toogle" class="mainDashboardCardsContainer">
-            <div v-for="(inference, index) in getInferences" 
-                :key="index" 
-                @click="handleToogle(), setImages(inference.normal_image, inference.inferred_image)" 
-                class="cardContainer"
+        
+        <div v-if="!toogle">
+            <v-row class="ma-8">
+                <v-col 
+                    cols="12"
+                    md="6"
+                    lg="4" 
+                    v-for="(inference, index) in getInferences" 
+                    :key="index" 
                 >
-                <div class="Image">
-                    <div class="icons">
-                        <img :src="imageLink(inference.normal_image)"/>
-                    </div>
-                </div>
-                <div class="detail"></div>
-                <div class="informations">
-                    <div class="inference">
-                        <p>Inferido: {{getInference(inference.inference)}}</p>
-                    </div>
-                    <div class="data">
-                        <p>{{inference.created_at}}</p>
-                    </div>
-                </div>
-            </div>
+                    <v-card
+                        class="mx-auto mb-6"
+                        max-width="344"
+                        elevation="2"
+                        outlined
+                        
+                    >
+                        <v-img
+                        :src="imageLink(inference.normal_image)"
+                        height="200px"
+                        ></v-img>
+
+                        <v-card-actions>
+                        <v-btn
+                            color="#9CCC65"
+                            text
+                            @click="handleToogle(), setImages(inference.normal_image, inference.inferred_image), resetAux()" 
+                        >
+                            Expandir
+                        </v-btn>
+
+                        <v-spacer></v-spacer>
+
+                        <v-btn
+                            icon
+                            @click="showInfo(index)"
+                        >
+                            <v-icon>{{selectedIndex == index ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                        </v-btn>
+                        
+                        </v-card-actions>
+
+                        <v-expand-transition>
+                            <!-- v-show="isInfoSelected(index)" -->
+                            <div>
+                                <div v-show="selectedIndex == index">
+                                    <v-divider></v-divider>
+
+                                    <v-row>
+                                        <div class="row-info-toten">
+                                            <h4>Detectado:</h4>
+                                            <div class="informations-toten">{{getInference(inference.inference)}}</div>
+                                        </div>
+                                    </v-row>
+                                    <v-row >
+                                        <div class="row-info-toten">
+                                            <h4>Data:</h4>
+                                            <div class="informations-toten">{{inference.created_at}}</div>
+                                        </div>
+                                    </v-row>
+                                    <v-row >
+                                        <div class="row-info-toten">
+                                            <h4>Hora:</h4>
+                                            <div class="informations-toten">{{inference.created_at}}</div>
+                                        </div>
+                                    </v-row>
+                                </div>
+                            </div>
+                        </v-expand-transition>
+                    </v-card>
+                </v-col>
+            </v-row>
         </div>
+
         <div v-if="!toogle" class="circle" @click="toTop">
             <font-awesome-icon :icon="upIcon" class="upIcon" />
         </div>
-    </div>
+    </v-container>
 </template>
 
 <script>
@@ -59,8 +111,11 @@ export default {
             selectedInference: {},
             toogle: false,
             items: null,
+            selectedIndex: undefined,
             normalImageSelected: '',
             inferredImageSelected: '',
+            show: false,
+            aux: [undefined, undefined],
             images: []
         }
     },
@@ -70,9 +125,38 @@ export default {
         this.handleInferences()
     },
     computed: {
-        ...mapGetters(['getInferences', 'getSelectedInference'])
+        ...mapGetters(['getInferences', 'getSelectedInference']),
     },
     methods: {
+        isInfoSelected(index){
+            console.log(index)
+            for(let i=0; i<= this.selectedIndex.length; i++) {
+                if(this.selectedIndex[i] == index) return true
+                else return false
+            }
+        },
+        resetAux() {
+            this.selectedIndex = undefined
+            this.aux = [undefined, undefined]
+            return 
+        },
+        showInfo(index){
+            let aux1 = null
+
+            aux1 = this.aux[1]
+            this.aux.pop()
+            this.aux.pop()
+            this.aux.push(aux1)
+            this.aux.push(index)
+
+            if (this.aux[0] == this.aux[1]) {
+                this.selectedIndex = undefined
+                this.aux = [undefined, undefined]
+                return 
+            } 
+
+            this.selectedIndex = index
+        },
         toTop(){
             window.scrollTo(0, 0);
         },

@@ -53,22 +53,22 @@
   margin: 10px 0;
 }
 
-button {
-  //border-radius: 10px;
-  outline-style: none;
-  border-style: none;
-  // border: 1px solid #cecece;
-  background-color: $green-theme;
-  color: white;
-  padding: 17px;
-  font-size: 14px;
-  //box-shadow: 0px 5px 15px $default-gray;
-  cursor: pointer;
-}
+// button {
+//   //border-radius: 10px;
+//   outline-style: none;
+//   border-style: none;
+//   // border: 1px solid #cecece;
+//   background-color: $green-theme;
+//   color: white;
+//   padding: 17px;
+//   font-size: 14px;
+//   //box-shadow: 0px 5px 15px $default-gray;
+//   cursor: pointer;
+// }
 
-button:hover{
-  background-color: $red;
-}
+// button:hover{
+//   background-color: $red;
+// }
 
 .error {
   color: $red;

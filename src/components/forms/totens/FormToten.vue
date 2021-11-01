@@ -40,24 +40,25 @@
                             class="py-4"
                         ></v-text-field>
                         <v-row>
-                            <v-col>
+                            <v-col cols="5">
                                 <v-btn
                                 color="#7CB342"
                                 dark
                                 large
-                                class="px-12 mr-2"
+                                class="px-12"
                                 @click="submit"
                                 >
                                     Criar
                                 </v-btn>
                             </v-col>
-                            <v-col>
+                            <v-spacer></v-spacer>
+                            <v-col cols="5">
                                 <v-btn 
                                     color="orange lighten-2"
                                     dark
                                     large
                                     @click="clear"
-                                    class="px-12 ml-2"
+                                    class="px-12"
                                 >
                                     Limpar
                                 </v-btn>

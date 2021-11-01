@@ -139,10 +139,6 @@ img{
         height: 50px;
     }
     .images {
-        @include for-phone-only {
-            width: 250px;
-            margin: auto;
-        }
         max-width: 100%;
         height: 100%;
     }
@@ -182,6 +178,10 @@ img{
                 padding-bottom: 10px;
                 padding-right: 0px;
             }
+            @include for-phone-only {
+                width: 250px;
+                margin: auto;
+            }
         }
         .containerInferedImage{
             display: flex;
@@ -193,6 +193,10 @@ img{
                 width: 300px;
                 margin-top: 10px;
                 margin-left: 0px;
+            }
+            @include for-phone-only {
+                width: 250px;
+                margin: auto;
             }
         }
     }

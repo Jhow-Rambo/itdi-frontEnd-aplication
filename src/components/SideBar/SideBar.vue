@@ -2,7 +2,7 @@
     <div class="main">
     <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="d-lg-none px-4 pt-2 test"></v-app-bar-nav-icon> -->
         <v-icon @click.stop="showSideBar" class="d-lg-none px-4 test">{{'mdi-menu'}}</v-icon> 
-        <v-navigation-drawer app dark mobile-breakpoint="1264" v-model="drawer" class="sideBar">
+        <v-navigation-drawer app dark mobile-breakpoint="1264" v-model="drawer" class="sideBar" fixed>
             <v-list-item color="lime lighten-3" class="logo">
                 <v-list-item-content>
                     <v-list-item-title class="text-h9">

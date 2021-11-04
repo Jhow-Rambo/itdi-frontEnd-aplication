@@ -1,6 +1,15 @@
 <template>
     <v-main>
-        <v-container fluid class="px-8">
+        <v-container class="loading" v-if="!!this.getInferences == false">
+            <v-progress-circular
+            :size="70"
+            :width="7"
+            color="blue"
+            indeterminate
+            class="circle"
+            ></v-progress-circular>
+        </v-container>
+        <v-container fluid class="px-8" v-if="!!this.getInferences == true">
             <v-row>
                 <v-col cols="12" lg="5" md="5">
                     <v-card elevation="2" outlined min-height="133">
@@ -96,6 +105,7 @@ export default {
     name: "DashboardCards",
     data () {
     return {
+        loading: false,
         show: false,
         expand: false,
         DashboardIcon: faChartArea,
@@ -125,7 +135,7 @@ export default {
   },
   computed: {
     ...mapGetters(['getInferences', 'getSelectedInference']),
-  },
+  }, 
   methods: {
     ...mapActions([ 'setInferences' ]),
     getInference() {

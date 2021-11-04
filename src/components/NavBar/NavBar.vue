@@ -1,4 +1,5 @@
 <template>
+<v-container>
   <v-app-bar app absolute dense dark>
     <v-spacer class="d-lg-none"></v-spacer>
     <v-subheader>Inventário de Fauna</v-subheader>
@@ -12,6 +13,8 @@
         Sair
     </v-btn>
   </v-app-bar>
+</v-container>
+
 </template>
 
 <script>

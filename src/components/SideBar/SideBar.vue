@@ -6,7 +6,7 @@
             <v-list-item color="lime lighten-3" class="logo">
                 <v-list-item-content>
                     <v-list-item-title class="text-h9">
-                        ITDT
+                        NIT
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
